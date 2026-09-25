@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // السماح فقط للـ Functions بالوصول (Backend Only)
+    // لا يُسمح للمستخدمين بالوصول المباشر
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
